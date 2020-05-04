@@ -1,0 +1,117 @@
+<style>
+
+    body{
+        display:grid;
+        grid-template-columns: 200px auto;
+        grid-template-areas: "nav main"
+    }
+
+    #navbar{
+        grid-area: nav;
+        top:0; /*Makes the header start at the top of the page*/
+        position: fixed;
+    }
+
+    #main-doc{
+        grid-area: main;
+    }
+
+</style>
+
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a class="nav-link" href="#introduction" class=header-links>Introduction</a></li>
+            <li><a class="nav-link" href="#select" class=header-links>Select</a></li>
+            <li><a class="nav-link" href="#insert" class=header-links>Insert</a></li>
+            <li><a class="nav-link" href="#update" class=header-links>Update</a></li>
+            <li><a class="nav-link" href="#delete" class=header-links>Delete</a></li>
+            <li><a class="nav-link" href="#create" class=header-links>Create</a></li>
+            <li><a class="nav-link" href="#drop" class=header-links>Drop</a></li>
+        </ul>
+    </nav>
+
+    <div id="main-doc">
+        <section class="main-section" id="introduction">
+           <header>Introduction</header> 
+           <p>SQL (pronounced "ess-que-el") stands for Structured Query Language. SQL is used to communicate with a database. SQL statements are used to perform tasks such as update data on a database, or retrieve data from a database. Six standard SQL commands can be used to accomplish almost everything that one needs to do with a database: "Select", "Insert", "Update", "Delete", "Create", and "Drop".</p>
+        </section>
+
+        <section class="main-section" id="select">
+            <header>Select</header> 
+            <p>The "Select" command is used to query data from a table.</p>
+            <ul>
+                <lh>For example:</lh>
+                <li><p><code>Select c1, c2 FROM t;</code> will query data in columns "c1" and "c2" from a table named "t".</p></li>
+                <li><p><code>Select * FROM t;</code> will query data in all columns from a table named "t".</p></li>
+                <li><p><code>Select c1, c2 FROM t WHERE condition;</code> will query data in columns "c1" and "c2" from a table named "t" where a condition is true.</p></li>
+                <li><p><code>Select DISTINCT c1 from FROM t;</code> will query distinct rows in column "c1" in all columns from a table named "t".</p></li>
+            </ul>
+
+         </section>
+
+         <section class="main-section" id="insert">
+            <header>Insert</header> 
+            <p>The "insert" command is used to add rows of data into a table.</p>
+            <code>INSERT INTO t(c1,c2,c3)<br>
+                VALUES(1,2,3);
+            </code>
+            <p>The above code will insert a row where columns "c1", "c2" and "c3" have the values 1, 2, and 3.</p>
+            <code>INSERT INTO t(c1,c2,c3)<br>
+                VALUES(1,2,3),<br>
+                VALUES(4,5,6);
+            </code>
+            <p>The above code will insert two rows of data into columns "c1", "c2" and "c3".</p>
+         </section>
+
+         <section class="main-section" id="update">
+            <header>Update</header> 
+            <p>The "update" command will replace existing data with a new value.</p>
+            <code>Test=Test</code>
+            <code>UPDATE t<br>
+            SET c1 = 100;</code>
+            <p>The above code will update all values of column "c1" to be 100.</p>
+            <code>UPDATE t<br>
+                SET c1 = 100,<br>
+                SET c2 = 200;</code>
+                <p>The above code will update all values of column "c1" to be 100 and all values in C2 to be 200.</p>
+            <code>UPDATE t<br>
+                SET c1 = 100,<br>
+                WHERE c2 < 100;</code>
+                <p>The above code will update values of column "c1" to be 100 for all isntances where "c1" is less than 100.</p>
+         </section>
+
+         <section class="main-section" id="delete">
+            <header>Delete</header> 
+            <p>The "delete" command will remove data from a table.</p>
+            <code>DELETE FROM t;</code>
+            <p>The above code will delete all data from table "t".</p>
+            <code>DELETE FROM t<br>
+                WHERE c1>999;</code>
+            <p>The above code will delete all rows from table "t" where column "c1" is greater than 999.</p>
+         </section>
+
+         <section class="main-section" id="create">
+            <header>Create</header> 
+            <p>The "create" command will create a new table.</p>
+            <code>CREATE TABLE t (<br>
+            id INT PRIMARY KEY<br>
+            name VCHAR NOT NULL
+            price INT DEFAULT 0</code>
+            <ul>
+                <lh>The above code will create a table with the 3 columns:</lh>
+                <li>An integer row named "id"  that is the table's primary key.</li>
+                <li>A character key named "name" that cannot be null.</li>
+                <li>An integer row named "price" that defaults to zero.</li>
+            </ul>
+         </section>
+
+         <section class="main-section" id="drop">
+            <header>Drop</header> 
+            <p>The "drop" command will delete a table.</p>
+            <code>DROP TABLE t;</code>
+            <p>The above code will delete the table "t" from the database.</p>
+         </section>
+         <footer>Created by James Heaton</footer>
+    </div>
+</body>
