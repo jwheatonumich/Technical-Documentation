@@ -2,24 +2,94 @@
 
     body{
         display:grid;
-        grid-template-columns: 200px auto;
-        grid-template-areas: "nav main"
+        grid-template-columns: 250px auto;
+        grid-template-areas: "nav main";
+    }
+
+    /*Change the grod to rows when screen gets small*/
+    @media (max-width: 700px) {
+        body{
+        display:grid;
+        grid-template-rows: 75px auto;
+        grid-template-columns:none; /*Get rid of the column width limit*/
+        grid-template-areas: 
+        "nav" 
+        "main";
+        }
+    }
+
+    code{
+        background-color:lightgrey;
+    }
+
+    header{
+        font-size:24;
+        font-weight:bold;
+    }
+
+    nav ul {
+        padding-left:0; /*Get rid of the indent on the nav list*/
+    }
+
+    nav li {
+        list-style-type: none; 
+        font-weight:bold;
+        border-top: 1px solid black;
+    }
+
+    @media (max-width:700px){
+        nav li {
+            display: block;
+            border-top: none;
+            border-left: 1px;
+            float:left; /*Makes the list go horz instead of vert*/
+            text-align:center;
+        }
+    }
+
+    nav a {
+        display:block;
+        padding: 5px;
+        text-decoration: none;
+        color:black;
+    }
+
+    nav a:hover, nav a:active  {
+        display:block;
+        background-color: rgb(175, 175, 175);
     }
 
     #navbar{
         grid-area: nav;
         top:0; /*Makes the header start at the top of the page*/
         position: fixed;
+        padding:10px 10px 0 10px;
+        background-color: lightgrey;
+        height: 100%;
+    }
+
+    @media (max-width:700px){
+        #navbar{
+            width:100%;
+            height:75px;
+        }
     }
 
     #main-doc{
         grid-area: main;
     }
 
+    @media (max-width:700px){
+        #main-doc{
+        padding:10px;
+    }
+    }
+
 </style>
 
 <body>
     <nav id="navbar">
+        <header>SQL Documentation</header>
         <ul>
             <li><a class="nav-link" href="#introduction" class=header-links>Introduction</a></li>
             <li><a class="nav-link" href="#select" class=header-links>Select</a></li>
@@ -31,17 +101,18 @@
         </ul>
     </nav>
 
-    <div id="main-doc">
+    <main id="main-doc">
         <section class="main-section" id="introduction">
            <header>Introduction</header> 
-           <p>SQL (pronounced "ess-que-el") stands for Structured Query Language. SQL is used to communicate with a database. SQL statements are used to perform tasks such as update data on a database, or retrieve data from a database. Six standard SQL commands can be used to accomplish almost everything that one needs to do with a database: "Select", "Insert", "Update", "Delete", "Create", and "Drop".</p>
+           <p>SQL is used to communicate with a database. SQL statements are used to perform tasks such as update data on a database, or retrieve data from a database. Six standard SQL commands can be used to accomplish almost everything that one needs to do with a database: "Select", "Insert", "Update", "Delete", "Create", and "Drop".</p>
         </section>
 
         <section class="main-section" id="select">
             <header>Select</header> 
             <p>The "Select" command is used to query data from a table.</p>
+            <p>For example:</p>
             <ul>
-                <lh>For example:</lh>
+
                 <li><p><code>Select c1, c2 FROM t;</code> will query data in columns "c1" and "c2" from a table named "t".</p></li>
                 <li><p><code>Select * FROM t;</code> will query data in all columns from a table named "t".</p></li>
                 <li><p><code>Select c1, c2 FROM t WHERE condition;</code> will query data in columns "c1" and "c2" from a table named "t" where a condition is true.</p></li>
@@ -67,7 +138,6 @@
          <section class="main-section" id="update">
             <header>Update</header> 
             <p>The "update" command will replace existing data with a new value.</p>
-            <code>Test=Test</code>
             <code>UPDATE t<br>
             SET c1 = 100;</code>
             <p>The above code will update all values of column "c1" to be 100.</p>
@@ -97,9 +167,9 @@
             <code>CREATE TABLE t (<br>
             id INT PRIMARY KEY<br>
             name VCHAR NOT NULL
-            price INT DEFAULT 0</code>
+            price INT DEFAULT 0;</code>
+            <p>The above code will create a table with the 3 columns:</p>
             <ul>
-                <lh>The above code will create a table with the 3 columns:</lh>
                 <li>An integer row named "id"  that is the table's primary key.</li>
                 <li>A character key named "name" that cannot be null.</li>
                 <li>An integer row named "price" that defaults to zero.</li>
@@ -113,5 +183,5 @@
             <p>The above code will delete the table "t" from the database.</p>
          </section>
          <footer>Created by James Heaton</footer>
-    </div>
+        </main>
 </body>
